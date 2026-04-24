@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail AI Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">
+          <span class="logo-icon">◈</span>
+          <span class="logo-text">RetailAI</span>
+        </div>
+        <p class="tagline">Document Intelligence<br>for Retail Teams</p>
+      </div>
+
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="pdfFile" accept=".pdf,.doc,.docx,.txt" hidden>
+        <div class="drop-area" onclick="document.getElementById('pdfFile').click()" id="dropArea">
+          <div class="drop-icon">⬆</div>
+          <p class="drop-label">Drop document here</p>
+          <p class="drop-sub">PDF, DOCX, TXT</p>
+        </div>
+        <button class="upload-btn" onclick="uploadPDF()">
+          <span class="btn-icon">↑</span> Upload Document
+        </button>
+        <div class="upload-status" id="uploadStatus"></div>
+      </div>
+
+      <div class="doc-info" id="docInfo" style="display:none">
+        <div class="doc-badge">
+          <span class="doc-icon">▣</span>
+          <div>
+            <p class="doc-name" id="docName">—</p>
+            <p class="doc-meta">Active document</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>Group 03-D12</p>
+      </div>
+    </aside>
+
+    <!-- Main chat area -->
+    <main class="main">
+      <div class="chat-header">
+        <h1>Ask your document</h1>
+        <span class="status-dot" id="statusDot"></span>
+      </div>
+
+      <div class="chat-box" id="chatContainer">
+        <div class="empty-state" id="emptyState">
+          <p class="empty-icon">◈</p>
+          <p class="empty-title">No document loaded yet</p>
+          <p class="empty-sub">Upload a document from the sidebar, then ask anything about it.</p>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <input
+          type="text"
+          id="questionInput"
+          placeholder="Ask something about your document…"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter') askQuestion()"
+        />
+        <button class="send-btn" onclick="askQuestion()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
